@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,8 +50,11 @@ class MainActivity : AppCompatActivity() {
                     dataRepository[i],
                     dataFollowing[i],
                     dataFollowers[i]
+
+
                 )
                 listUser.add(user)
+                Log.d("img:", "${dataAvatar.getResourceId(i, -1)}")
             }
             dataAvatar.recycle()
 

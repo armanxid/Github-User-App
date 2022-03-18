@@ -1,20 +1,27 @@
 package com.example.githubuserapp
 
+import android.graphics.drawable.Drawable
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubuserapp.databinding.ActivityMainBinding
 import com.example.githubuserapp.databinding.ItemRowUserBinding
+import java.io.File
 
 class ListUserAdapter(private val listUser: ArrayList<User>) :
     RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    private lateinit var binding: ActivityMainBinding
+    var users = arrayListOf<User>()
+
+//    private lateinit var binding: ActivityMainBinding
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
@@ -24,9 +31,6 @@ class ListUserAdapter(private val listUser: ArrayList<User>) :
 //        var imgAvatar: ImageView = itemView.findViewById(R.id.img_item_photo)
 //        var tvUsername: TextView = itemView.findViewById(R.id.tv_user_username)
 //        var tvName: TextView = itemView.findViewById(R.id.tv_user_name)
-
-
-
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ListViewHolder {
@@ -37,14 +41,23 @@ class ListUserAdapter(private val listUser: ArrayList<User>) :
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+
         val (username, name, avatar) = listUser[position]
         holder.binding.tvUserName.text = name
         holder.binding.tvUserUsername.text = username
-        holder.binding.imgItemPhoto.setImageResource(avatar)
+//        holder.binding.imgItemPhoto.setImageResource(avatar)
+        Glide.with(holder.binding.root)
+            .load(avatar)
+            .circleCrop()
+            .into(holder.binding.imgItemPhoto)
 //        holder.tvUsername.text = username
 //        holder.tvName.text = name
 
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listUser[holder.adapterPosition]) }
+//        Log.d("img")
+
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listUser[position]) }
+
+
 
     }
 
