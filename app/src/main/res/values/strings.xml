@@ -11,11 +11,16 @@
     <string name="location">Location</string>
     <string name="search">Search</string>
     <string name="search_hint">Username</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="following_text">Hello Following Fragment</string>
+    <string name="followers_text">Hello Follower Fragment</string>
     <string name="this_activity">Ini adalah menu activity</string>
     <string name="this_fragment">Ini adalah menu fragment</string>
     <string name="menu_1">Menu 1</string>
     <string name="menu_2">Menu 2</string>
+    <string name="tab_following">Following</string>
+    <string name="tab_followers">Followers</string>
+    <string name="tab_setting">Setting</string>
+    <string name="content_tab_text">This is Tab %1$d</string>
 
     <string-array name="username">
         <item>JakeWharton</item>
